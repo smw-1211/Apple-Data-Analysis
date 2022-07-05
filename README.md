@@ -1,3 +1,3 @@
 # Apple-Data-Analysis
 
-Analysis of Apple Tweet's data using R. 
+Analysis of Apple's Tweets data using R. 
