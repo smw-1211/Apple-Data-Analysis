@@ -1,0 +1,955 @@
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+{> install.packages("tm")}
+Installing package into ‘/cloud/lib/x86_64-pc-linux-gnu-library/4.1’
+(as ‘lib’ is unspecified)
+trying URL 'http://rspm/default/__linux__/focal/latest/src/contrib/tm_0.7-8.tar.gz'
+Content type 'application/x-gzip' length 1450916 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+* installing *binary* package ‘tm’ ...
+* DONE (tm)
+
+The downloaded source packages are in
+	‘/tmp/RtmpsVGlj8/downloaded_packages’
+{> install.packages("purrr")}
+Installing package into ‘/cloud/lib/x86_64-pc-linux-gnu-library/4.1’
+(as ‘lib’ is unspecified)
+trying URL 'http://rspm/default/__linux__/focal/latest/src/contrib/purrr_0.3.4.tar.gz'
+Content type 'application/x-gzip' length 427619 bytes (417 KB)
+==================================================
+downloaded 417 KB
+
+* installing *binary* package ‘purrr’ ...
+* DONE (purrr)
+
+The downloaded source packages are in
+	‘/tmp/RtmpsVGlj8/downloaded_packages’
+{> install.packages("twitteR")}
+Installing package into ‘/cloud/lib/x86_64-pc-linux-gnu-library/4.1’
+(as ‘lib’ is unspecified)
+trying URL 'http://rspm/default/__linux__/focal/latest/src/contrib/twitteR_1.1.9.tar.gz'
+Content type 'application/x-gzip' length 604908 bytes (590 KB)
+==================================================
+downloaded 590 KB
+
+* installing *binary* package ‘twitteR’ ...
+* DONE (twitteR)
+
+The downloaded source packages are in
+	‘/tmp/RtmpsVGlj8/downloaded_packages’
+{> install.packages("syuzhet")}
+Installing package into ‘/cloud/lib/x86_64-pc-linux-gnu-library/4.1’
+(as ‘lib’ is unspecified)
+trying URL 'http://rspm/default/__linux__/focal/latest/src/contrib/syuzhet_1.0.6.tar.gz'
+Content type 'application/x-gzip' length 3105198 bytes (3.0 MB)
+==================================================
+downloaded 3.0 MB
+
+* installing *binary* package ‘syuzhet’ ...
+* DONE (syuzhet)
+
+The downloaded source packages are in
+	‘/tmp/RtmpsVGlj8/downloaded_packages’
+> install.packages("graphics")
+Error in install.packages : Updating loaded packages
+{> install.packages("stringr")}
+Installing package into ‘/cloud/lib/x86_64-pc-linux-gnu-library/4.1’
+(as ‘lib’ is unspecified)
+trying URL 'http://rspm/default/__linux__/focal/latest/src/contrib/stringr_1.4.0.tar.gz'
+Content type 'application/x-gzip' length 204523 bytes (199 KB)
+==================================================
+downloaded 199 KB
+
+* installing *binary* package ‘stringr’ ...
+* DONE (stringr)
+
+The downloaded source packages are in
+	‘/tmp/RtmpsVGlj8/downloaded_packages’
+> install.packages("graphics")
+Installing package into ‘/cloud/lib/x86_64-pc-linux-gnu-library/4.1’
+(as ‘lib’ is unspecified)
+Warning in install.packages :
+  package ‘graphics’ is a base package, and should not be updated
+
+****************************************************Scraping Twitter Tweets*********************************************
+> api_key<- "9l4mCdSvxfMymMSBoUysNjolK"
+> api_secret <- "DFeIAFUeOe86s2jfgYXHEAb0w6fB2rJ4mhjkx0nzvzK2NPqVru"
+> access_token <- "1441612745430876166-trGIip3slftSzkNBK98MWACngnppa5"
+> access_token_secret <- "L3XIWQxtdrW1judpUHxladvu7A9MpJopqivmody30EIBr"
+> 
+> save.image("/cloud/project/R keys.RData")
+> setup_twitter_oauth(api_key,api_secret,access_token,access_token_secret)
+[1] "Using direct authentication"
+> tweets <- searchTwitter("$appl" , n=100, lang = 'en')
+> tweets
+[[1]]
+[1] "BrockHa63165659: @Oculustrade I think we gap down More tomorrow. Futures are ugly. Next week $TSLA and $APPL earnings"
+
+[[2]]
+[1] "AppleBot14: RT @tqlagirl: Current Mood \n\n$TSLA $NVDA $LCID $BBIG $APPL $MSFT $SPY $OCGN https://t.co/yCJe3wgLBA"
+
+[[3]]
+[1] "AppleBot14: RT @amgoody29: @Crussian17 I think it’s a horrible sign for consumer discretionaries, I can’t imagine $Appl and $amzn since their q3 report…"
+
+[[4]]
+[1] "AppleBot14: RT @TheOldFirm1: @INArteCarloDoss I hear you, but... $NFLX missed. What if $AMZN misses tough comps with last year's spending binge? $APPL?…"
+
+[[5]]
+[1] "AppleBot14: RT @mewmartVGC: Started my major push towards FIRE by directly investing in equities, starting with $TSLA , $APPL and $PLTR, 3 companies th…"
+
+[[6]]
+[1] "TheTygryss: RT @TheRealDevinB: I’m predicting $appl buys $pton this year.  Perfect integration with their fitness app and Apple Music."
+
+[[7]]
+[1] "mewmartVGC: Started my major push towards FIRE by directly investing in equities, starting with $TSLA , $APPL and $PLTR, 3 comp… https://t.co/fxb9bwtrMU"
+
+[[8]]
+[1] "AppleBot14: RT @InvestwithWill: @Rob111__ @BluSuitDillon During the 2010's $APPL was trading at a below average P/E relative to its peers. Market was p…"
+
+[[9]]
+[1] "AppleBot14: RT @Gays4Tesla: @teslafsdbeta Jeremy is LONG I heard . . . \n\nLONG $APPL"
+
+[[10]]
+[1] "Gays4Tesla: @teslafsdbeta Jeremy is LONG I heard . . . \n\nLONG $APPL"
+
+[[11]]
+[1] "AppleBot14: RT @grouchapato: AM looking great.\n\n$QQQ $TSLA $APPL $SPY $DIA $GOOG\n\nTomorrow: -4%\n\nAnd that's being positive. https://t.co/NDLEeOs8ud"
+
+[[12]]
+[1] "grouchapato: AM looking great.\n\n$QQQ $TSLA $APPL $SPY $DIA $GOOG\n\nTomorrow: -4%\n\nAnd that's being positive. https://t.co/NDLEeOs8ud"
+
+[[13]]
+[1] "InvestwithWill: @Rob111__ @BluSuitDillon During the 2010's $APPL was trading at a below average P/E relative to its peers. Market w… https://t.co/PkuYujEG5C"
+
+[[14]]
+[1] "theboytimi: $APPL seems like the obvious answer here at less than $10 a share.  \n\n$GOOGL could also and integrate it with Fitbit https://t.co/aLg0r4IGqQ"
+
+[[15]]
+[1] "TheOldFirm1: @INArteCarloDoss I hear you, but... $NFLX missed. What if $AMZN misses tough comps with last year's spending binge?… https://t.co/SYMPORX4W9"
+
+[[16]]
+[1] "AppleBot14: RT @IMHOnly: #MFAAAANNGT \n$MSFT $FB $AMZN $APPL $AMD $NVDA $NFLX $GOOGL $TSLA $ARRK\n$SPY $QQQ $YM $NQ $ES \nOuch.. nasty, nasty close…. Indi…"
+
+[[17]]
+[1] "IMHOnly: #MFAAAANNGT \n$MSFT $FB $AMZN $APPL $AMD $NVDA $NFLX $GOOGL $TSLA $ARRK\n$SPY $QQQ $YM $NQ $ES \nOuch.. nasty, nasty c… https://t.co/6agpevzpmU"
+
+[[18]]
+[1] "amgoody29: @Crussian17 I think it’s a horrible sign for consumer discretionaries, I can’t imagine $Appl and $amzn since their q3 reports missed"
+
+[[19]]
+[1] "AppleBot14: RT @OmarGDoesStocks: The Apple number is probably not a great indicator even if they gave it because they were giving away (and still give…"
+
+[[20]]
+[1] "TSLA__bot: RT @daQgon: @Ralvero @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the dT…"
+
+[[21]]
+[1] "TSLA__bot: RT @daQgon: @Cryptic_Maestro @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could us…"
+
+[[22]]
+[1] "TSLA__bot: RT @daQgon: @cryptogems555 @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use…"
+
+[[23]]
+[1] "TSLA__bot: RT @daQgon: @Cryptic_Maestro @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could us…"
+
+[[24]]
+[1] "OmarGDoesStocks: The Apple number is probably not a great indicator even if they gave it because they were giving away (and still gi… https://t.co/PswhQU0CCf"
+
+[[25]]
+[1] "Gambiste1: RT @skysoldier93: @TSLAFanMtl @garyblack00 I see troubles ahead for $amzn $appl $tsla too. I would be freaking scared if I were holding the…"
+
+[[26]]
+[1] "AppleBot14: RT @daQgon: @JakeGagain @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the…"
+
+[[27]]
+[1] "Gambiste1: RT @daQgon: @Ralvero @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the dT…"
+
+[[28]]
+[1] "AppleBot14: RT @skysoldier93: @TSLAFanMtl @garyblack00 I see troubles ahead for $amzn $appl $tsla too. I would be freaking scared if I were holding the…"
+
+[[29]]
+[1] "skysoldier93: @TSLAFanMtl @garyblack00 I see troubles ahead for $amzn $appl $tsla too. I would be freaking scared if I were holding these"
+
+[[30]]
+[1] "AppleBot14: RT @daQgon: @Ralvero @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the dT…"
+
+[[31]]
+[1] "riskytraderJT: Please don’t forget this levels $iwm $qqq $spy $amzn $appl $msft https://t.co/918MjHRauZ"
+
+[[32]]
+[1] "daQgon: @Ralvero @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange coul… https://t.co/qjEIBZYKCb"
+
+[[33]]
+[1] "daQgon: @JakeGagain @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange c… https://t.co/8UcY5IFTOw"
+
+[[34]]
+[1] "tqlagirl: Current Mood \n\n$TSLA $NVDA $LCID $BBIG $APPL $MSFT $SPY $OCGN https://t.co/yCJe3wgLBA"
+
+[[35]]
+[1] "daQgon: @CryptoGPO @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange co… https://t.co/kD5HH6gtde"
+
+[[36]]
+[1] "daQgon: @Cryptic_Maestro @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every excha… https://t.co/zFrgZvIORj"
+
+[[37]]
+[1] "Allan_Dabre: @Mr_Derivatives I think $NFLX earnings should not be an indicator for $GOOG or $MSFT or $APPL earnings. I have a fe… https://t.co/YxDRgXOhnd"
+
+[[38]]
+[1] "AppleBot14: RT @Keanu5004: Most profitable trading community\n\n$KODK $UAVS $GNUS $GEVO $ZOM $CHGG $DYNT $SPAQ $SPY $AMD $QQQ $XELA $XERS $IDEX $APPL htt…"
+
+[[39]]
+[1] "TSLA__bot: RT @daQgon: @DaCryptoGeneral @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could us…"
+
+[[40]]
+[1] "MichaelMigliac5: RT @TH_Analysis: $APPL $MSFT $AMZN $FB $TSLA couldn't muster enough bids to get us out of the Initial Balance and then dragged everything d…"
+
+[[41]]
+[1] "TH_Analysis: $APPL $MSFT $AMZN $FB $TSLA couldn't muster enough bids to get us out of the Initial Balance and then dragged every… https://t.co/FO3JkIUCDw"
+
+[[42]]
+[1] "TSLA__bot: RT @daQgon: @Cryptic_Maestro @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could us…"
+
+[[43]]
+[1] "TSLA__bot: RT @daQgon: @Ralvero @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the dT…"
+
+[[44]]
+[1] "TSLA__bot: RT @daQgon: @Ralvero @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the dT…"
+
+[[45]]
+[1] "AppleBot14: RT @therealjaycc: This mf knew $SPY\n\n$QQQ $APPL $FB $TSLA https://t.co/Jx3Y1VeHC2"
+
+[[46]]
+[1] "AppleBot14: RT @pweber: @RampCapitalLLC $APPL for 4.3B cash. Q3 2022"
+
+[[47]]
+[1] "pweber: @RampCapitalLLC $APPL for 4.3B cash. Q3 2022"
+
+[[48]]
+[1] "therealjaycc: This mf knew $SPY\n\n$QQQ $APPL $FB $TSLA https://t.co/Jx3Y1VeHC2"
+
+[[49]]
+[1] "Keanu5004: Most profitable trading community\n\n$KODK $UAVS $GNUS $GEVO $ZOM $CHGG $DYNT $SPAQ $SPY $AMD $QQQ $XELA $XERS $IDEX… https://t.co/EdSrFEsX0z"
+
+[[50]]
+[1] "AppleBot14: RT @Arman_Options4u: @ashkanstweets Haha. Would be cool if $APPL acquires $PTON later in the year"
+
+[[51]]
+[1] "Arman_Options4u: @ashkanstweets Haha. Would be cool if $APPL acquires $PTON later in the year"
+
+[[52]]
+[1] "rbarsom: Snowmobiles are dropping in price up here! Not sure what that means for meme stocks but hey take what you can get !… https://t.co/u37k4UygOk"
+
+[[53]]
+[1] "StocksandYield: @RampCapitalLLC $appl at $10"
+
+[[54]]
+[1] "lanadelshley: @JonahLupton I can definitely see $appl taking this one"
+
+[[55]]
+[1] "AppleBot14: RT @therealjaycc: From -66% to +52% 🔥 we didn’t even avg down! \n\nWhat’s hilarious is that it’s always when i go heavy on contracts, shit go…"
+
+[[56]]
+[1] "therealjaycc: From -66% to +52% 🔥 we didn’t even avg down! \n\nWhat’s hilarious is that it’s always when i go heavy on contracts, s… https://t.co/H8oONoTGym"
+
+[[57]]
+[1] "DayTraderErika: Scrolling through some charts and just noticed the heads and shoulders on the daily on $APPL\nThat explains a lot lol"
+
+[[58]]
+[1] "AppleBot14: RT @DonchoGunchev: @ValueAnalyst1 Finally I feel appreciated ;-)\n\nJK but no, really, no $APPL."
+
+[[59]]
+[1] "Kurthaslefttheb: RT @congresstrading: Pelosi invested millions and made millions trading stocks in 2021. Nine of her eleven investments were profitable (she…"
+
+[[60]]
+[1] "AppleBot14: RT @IWokeUpInPain: @AustinGerig $APPL pt $80"
+
+[[61]]
+[1] "AppleBot14: RT @AskMarcio: @dougboneparth CEO believed in their own hype. Still an amazing product with an amazing community behind it, just not a $1T…"
+
+[[62]]
+[1] "AskMarcio: @dougboneparth CEO believed in their own hype. Still an amazing product with an amazing community behind it, just n… https://t.co/KNv0SOsja6"
+
+[[63]]
+[1] "AppleBot14: RT @Onpointtrader1: $WISH +9%\n$CLOV +7.2%\n$SPCE +6%\n\netc.\n\n$ARVL -6.5% again with absolutely no news 🤔🤔🤔\n\n$GME $AMC $BB $TSLA $APPL $MSFT $…"
+
+[[64]]
+[1] "AppleBot14: RT @MTCinabro: @JonahLupton Interesting question, I love my Peloton, it’s a great compliment to my gym routine. If I had to guess, it would…"
+
+[[65]]
+[1] "MTCinabro: @JonahLupton Interesting question, I love my Peloton, it’s a great compliment to my gym routine. If I had to guess,… https://t.co/4GTTCWB5M5"
+
+[[66]]
+[1] "TSLA__bot: RT @daQgon: @Ralvero @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the dT…"
+
+[[67]]
+[1] "Onpointtrader1: $WISH +9%\n$CLOV +7.2%\n$SPCE +6%\n\netc.\n\n$ARVL -6.5% again with absolutely no news 🤔🤔🤔\n\n$GME $AMC $BB $TSLA $APPL $MSFT $RKT $CENN $TDOC"
+
+[[68]]
+[1] "IWokeUpInPain: @AustinGerig $APPL pt $80"
+
+[[69]]
+[1] "TSLA__bot: RT @daQgon: @JakeGagain @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could use the…"
+
+[[70]]
+[1] "Sounak92570162: RT @TheRealDevinB: I’m predicting $appl buys $pton this year.  Perfect integration with their fitness app and Apple Music."
+
+[[71]]
+[1] "AppleBot14: RT @DoctorStocker: $spy 5 min RSI at 36 very very oversold here and tech stocks moving higher expecting a bounce back to 457.5-458 range in…"
+
+[[72]]
+[1] "TSLA__bot: RT @daQgon: @Cryptic_Maestro @defichain Stock Tokens do not count as security tokensRed exclamation mark symbol\n\nSo every exchange could us…"
+
+[[73]]
+[1] "DoctorStocker: $spy 5 min RSI at 36 very very oversold here and tech stocks moving higher expecting a bounce back to 457.5-458 ran… https://t.co/1WUGZUtCcw"
+
+[[74]]
+[1] "DonchoGunchev: @ValueAnalyst1 Finally I feel appreciated ;-)\n\nJK but no, really, no $APPL."
+
+[[75]]
+[1] "mim_dmodi: @austin_rief Now, $APPL should buy $PTON and integrate their own software &amp; Apple Fitness+ into Peloton bike with a big Ipad screen!"
+
+[[76]]
+[1] "AppleBot14: RT @bonker_99: @robertomulazzi There's a lot of that about.\n\nI wouldn't mind seeing the reality of $APPL inventory right now ..."
+
+[[77]]
+[1] "bonker_99: @robertomulazzi There's a lot of that about.\n\nI wouldn't mind seeing the reality of $APPL inventory right now ..."
+
+[[78]]
+[1] "ElVerracosky: RT @TheRealDevinB: I’m predicting $appl buys $pton this year.  Perfect integration with their fitness app and Apple Music."
+
+[[79]]
+[1] "AppleBot14: RT @KPuczkowskyj: $PLTR $CNBV $APPL CNBC would have you believe it’s wise to take profits on growth stocks today. lol!! 👇"
+
+[[80]]
+[1] "KPuczkowskyj: $PLTR $CNBV $APPL CNBC would have you believe it’s wise to take profits on growth stocks today. lol!! 👇"
+
+[[81]]
+[1] "DoctorStocker: $spy 458.20 for a huge break out of the bull flag on 2-5 min charts .. she is about to gooo ! 💥💥💥 $qqq $tsla $appl $msft $snap $baba"
+
+[[82]]
+[1] "AppleBot14: RT @DoctorStocker: $SPY just confirmed bullish MACD crossover SAR flipped to bottom and RSI pumping over 50! LETS FKN GOOO! huge buy signal…"
+
+[[83]]
+[1] "DoctorStocker: $SPY just confirmed bullish MACD crossover SAR flipped to bottom and RSI pumping over 50! LETS FKN GOOO! huge buy s… https://t.co/Q9A7B7zAmo"
+
+[[84]]
+[1] "IMHOnly: #MFAAAANNGT \n$MSFT $FB $AMZN $APPL $AMD $NVDA $NFLX $GOOGL $TSLA $ARRK\n$SPY $QQQ $YM $NQ $ES \n$SOFI Melt up begins… https://t.co/yFhOHwz7Ro"
+
+[[85]]
+[1] "WoodEric0: @ClickstreamC is expanding in growth, thanks to @HeypalA and @Nifter7. Due to a pending audit of $WNRS absorption,… https://t.co/8e4AV4N5hk"
+
+[[86]]
+[1] "DoctorStocker: Looks like $msft $appl $tsla and other tech/energy stocks could be making a push back to ATH! Good news for a $spy rally $qqq"
+
+[[87]]
+[1] "AppleBot14: RT @good_knights21: @boxing_etc On the play account $spy \n\nOn the serious account $tsla $appl $apph $DM"
+
+[[88]]
+[1] "good_knights21: @boxing_etc On the play account $spy \n\nOn the serious account $tsla $appl $apph $DM"
+
+[[89]]
+[1] "DoctorStocker: $spy all tech stocks moving higher intraday.. rally just starting looks like $qqq $tsla $baba $snap $appl $msft $twtr $c"
+
+[[90]]
+[1] "DoctorStocker: $spy ready for next big green candle push past 459 will be hugee now that $msft $appl $cost $tsla $baba $snap all p… https://t.co/4NHum3HRum"
+
+[[91]]
+[1] "lxrdgatsby: Performance in the last 10 years:\n\n#Bitcoin  +643,750%\n$TSLA: +19,062%\n$NVDA: +8,577%\n$NFLX: +4,007%\n$AMD: +2,285%… https://t.co/57hjIT4H8F"
+
+[[92]]
+[1] "AppleBot14: RT @labonskj: @MarketRebels $Appl $182.5 \U{01f974}"
+
+[[93]]
+[1] "labonskj: @MarketRebels $Appl $182.5 \U{01f974}"
+
+[[94]]
+[1] "GoDodgers2019: @WOLF_Financial spotted the news and back in to $APPL"
+
+[[95]]
+[1] "AlphaDigital10: @LawrenceLepard $appl uses slaves and helps govs spy on their people! Apple puts will print TENDIES! When China inv… https://t.co/6kGJiMeqyR"
+
+[[96]]
+[1] "Briefingcom: Sector Briefing: All eleven sectors display early gains with top-weighted $XLK (+1.8%) holding the lead while six o… https://t.co/bEhX5QAiWl"
+
+[[97]]
+[1] "Pappa_Young: RT @IMHOnly: #MFAAAANNGT \n$MSFT $FB $AMZN $APPL $AMD $NVDA $NFLX $GOOGL $TSLA $ARRK\n$SPY $QQQ $YM $NQ $ES \n$SOFI #SQUEEZE #SQUEEZE … not ye…"
+
+[[98]]
+[1] "IMHOnly: #MFAAAANNGT \n$MSFT $FB $AMZN $APPL $AMD $NVDA $NFLX $GOOGL $TSLA $ARRK\n$SPY $QQQ $YM $NQ $ES \n$SOFI Daily Chart\nIf… https://t.co/upyc6xjhRt"
+
+[[99]]
+[1] "IMHOnly: #MFAAAANNGT \n$MSFT $FB $AMZN $APPL $AMD $NVDA $NFLX $GOOGL $TSLA $ARRK\n$SPY $QQQ $YM $NQ $ES \n$SOFI #SQUEEZE… https://t.co/vmUppTNAaa"
+
+[[100]]
+[1] "AppleBot14: RT @TheBon_Scott: @jessegoh I'm still short the Naz100 via $SQQQ.  I'll hold my short until major stock breakdowns repair themselves (which…"
+
+> tweetsdf <- twListToDF(tweets)
+> tweetsdf <- twListToDF(tweets)
+> write.csv(tweetsdf, "appl.csv", row.names=F)
+> apple <-read.csv('appl.csv')
+> apple <-read.csv('appl.csv')
+
+************************************************Exploratory Data Analysis*********************************************************************************************
+> is.na(apple)
+        text favorited favoriteCount replyToSN created truncated replyToSID    id
+  [1,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+  [2,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+  [3,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+  [4,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+  [5,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+  [6,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+  [7,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+  [8,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+  [9,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [10,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [11,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [12,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [13,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [14,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [15,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [16,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [17,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [18,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [19,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [20,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [21,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [22,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [23,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [24,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [25,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [26,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [27,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [28,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [29,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [30,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [31,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [32,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [33,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [34,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [35,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [36,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [37,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [38,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [39,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [40,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [41,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [42,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [43,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [44,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [45,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [46,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [47,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [48,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [49,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [50,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [51,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [52,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [53,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [54,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+ [55,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [56,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [57,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [58,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [59,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [60,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [61,] FALSE     FALSE         FALSE      TRUE   FALSE     FALSE       TRUE FALSE
+ [62,] FALSE     FALSE         FALSE     FALSE   FALSE     FALSE      FALSE FALSE
+       replyToUID statusSource screenName retweetCount isRetweet retweeted longitude
+  [1,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [2,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [3,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [4,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [5,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [6,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [7,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [8,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+  [9,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [10,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [11,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [12,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [13,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [14,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [15,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [16,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [17,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [18,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [19,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [20,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [21,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [22,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [23,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [24,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [25,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [26,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [27,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [28,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [29,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [30,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [31,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [32,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [33,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [34,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [35,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [36,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [37,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [38,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [39,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [40,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [41,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [42,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [43,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [44,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [45,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [46,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [47,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [48,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [49,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [50,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [51,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [52,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [53,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [54,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [55,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [56,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [57,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [58,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [59,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [60,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [61,]       TRUE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+ [62,]      FALSE        FALSE      FALSE        FALSE     FALSE     FALSE      TRUE
+       latitude
+  [1,]     TRUE
+  [2,]     TRUE
+  [3,]     TRUE
+  [4,]     TRUE
+  [5,]     TRUE
+  [6,]     TRUE
+  [7,]     TRUE
+  [8,]     TRUE
+  [9,]     TRUE
+ [10,]     TRUE
+ [11,]     TRUE
+ [12,]     TRUE
+ [13,]     TRUE
+ [14,]     TRUE
+ [15,]     TRUE
+ [16,]     TRUE
+ [17,]     TRUE
+ [18,]     TRUE
+ [19,]     TRUE
+ [20,]     TRUE
+ [21,]     TRUE
+ [22,]     TRUE
+ [23,]     TRUE
+ [24,]     TRUE
+ [25,]     TRUE
+ [26,]     TRUE
+ [27,]     TRUE
+ [28,]     TRUE
+ [29,]     TRUE
+ [30,]     TRUE
+ [31,]     TRUE
+ [32,]     TRUE
+ [33,]     TRUE
+ [34,]     TRUE
+ [35,]     TRUE
+ [36,]     TRUE
+ [37,]     TRUE
+ [38,]     TRUE
+ [39,]     TRUE
+ [40,]     TRUE
+ [41,]     TRUE
+ [42,]     TRUE
+ [43,]     TRUE
+ [44,]     TRUE
+ [45,]     TRUE
+ [46,]     TRUE
+ [47,]     TRUE
+ [48,]     TRUE
+ [49,]     TRUE
+ [50,]     TRUE
+ [51,]     TRUE
+ [52,]     TRUE
+ [53,]     TRUE
+ [54,]     TRUE
+ [55,]     TRUE
+ [56,]     TRUE
+ [57,]     TRUE
+ [58,]     TRUE
+ [59,]     TRUE
+ [60,]     TRUE
+ [61,]     TRUE
+ [62,]     TRUE
+ [ reached getOption("max.print") -- omitted 38 rows ]
+
+> mean(apple)
+[1] NA
+Warning message:
+In mean.default(apple) : argument is not numeric or logical: returning NA
+> mean(apple, na.rm=TRUE)
+[1] NA
+Warning message:
+In mean.default(apple, na.rm = TRUE) :
+  argument is not numeric or logical: returning NA
+> apple[!complete.cases(apple),]
+> tsl[!complete.cases(tsl),]
+                                                                                                                                                    text
+1           RT @garyblack00: Huge distinction between $NFLX and $TSLA:  NFLX growth has plunged because of Covid overhang and competition.  TSLA growth…
+2         This house about to have 3 Tesla’s. \n\nMy second order had to be cancelled so I can support my wife in school but, m… https://t.co/Axh1q5vdRP
+3                              RT @hardmoneymag: BREAKING: TESLA TO OFFER SHORT SELLERS FREE RIDES TO BANKRUPTCY COURT $TSLA \n\nhttps://t.co/TLNS7E5IQI
+4            $sxp call, its a key level, trade safe....\n\n $SOUL $UFO $AAPL $TSLA $DOCN $AUPH $AMD $AVAX $ANKR $BTC $ADA $DOGE… https://t.co/spZNhYcE0m
+5           RT @eddiek2: Next week for $tsla will be wild (in a good way), earnings are going to be great.  We'll see more inflows into Tesla as its se…
+6         RT @garyblack00: Two bullish charts from ARK why to own $TSLA:\n- EV adoption continues to soar by over +50%/year (2021 +112%)\n- $TSLA holdi…
+7            RT @extremesb: Ambitious new #EV charging network launches in the #USA\n\nWonder who works with #EOSLinx …? ⁦@Austin_GIS⁩ #Intel $INTC $VSBY…
+8       RT @stevenmarkryan: https://t.co/Qs435LFwxa - Tesla “The One To Bet On”: Analyst (p.s. I SCREWED up...)\n\nNEW\n\n$TSLA #Tesla @Tesla #TeslaSto…
+9                                                                                         RT @garyblack00: $TSLA and $NDX today. https://t.co/6Wbw3ps3iQ
+10                                                                   If you panic sold your $tsla today you do not need to worry about Biden’s tax plan.
+11                                            RT @Teslaconomics: If you cant handle the red days, you don’t deserve the green days. 📉📈\n\n$TSLA #Tesla
+12           What is your first intention when you open your computer in the morning. Make or loose money. Answer this question… https://t.co/gGkXGxCZsH
+13         RT @elwalvador: Self driving cars will never happen, $TSLA is going to zero.\n\nQuantum computers will never happen, $IONQ is going to zero.…
+14          I have zero tech exposure since end of last year and I think the re-pricing is far from being done.\nSurprised that… https://t.co/WTTY6gX4pM
+15                                            RT @Teslaconomics: If you cant handle the red days, you don’t deserve the green days. 📉📈\n\n$TSLA #Tesla
+16        @jpr007 Great thread.\n\n$TSLA and other quality EV manufacturers such as $NIO provide the best hedge against inflati… https://t.co/FQOqTeRKH1
+17          @levelsio @0xN0mad How about this for stock picking? Yes 1/3rd my networth back in 2019 was in $TSLA. Volatile year… https://t.co/P4HkumLvSy
+18           RT @squawksquare: At least there is really no need to watch CNBC daily anymore. I mean, the markets are down. They're down every day. News…
+19                                                  RT @ValueAnalyst1: You’re not a true $TSLA Bull until you’ve watched your savings halve in a week 🔥
+20         RT @Umbisam: Several Chinese outlets reports that Tesla will officially launch the new 'Model Q' [😂] in 2023, be priced at $24,990 and will…
+21      RT @Umbisam: Reminder: Today, Jan 21, 2021, GigaShanghai Producing &amp; Shipping Regardless Wall Street Whales' Tricky Games. $TSLA\n(courtesy…
+22                                                                             RT @JesseCohenInv: $AAPL $MSFT $GOOGL $AMZN $TSLA https://t.co/dpEkl1BpZs
+23         RT @Umbisam: Several Chinese outlets reports that Tesla will officially launch the new 'Model Q' [😂] in 2023, be priced at $24,990 and will…
+24      Twitter's Top Stocks: \n\n$amc  Price: $17.97  Mentions: 641\n$gme  Price: $106.36  Mentions: 636\n$PTON  Price: $27.06… https://t.co/2uhN9DywLU
+25                          Supplemented by EXPERIENCE AND ABILITY TO TIME THE MARKET!\n$tsla $tslaq! Up $7 mil . Lost $2.5 mil… https://t.co/r1KDpznZgN
+26                                                                                                          RT @Kristennetten: $TSLA for the long haul ♥️
+27                                                                             RT @JesseCohenInv: $AAPL $MSFT $GOOGL $AMZN $TSLA https://t.co/dpEkl1BpZs
+28    Twitter's Recommended BUY:\n\n$PTON Mentions: 225\n$SPY Mentions: 186\n$TSLA Mentions: 153\n\nTwitter's Recommended SELL:… https://t.co/pUE592pOSv
+29        RT @BMT094: Anyone have a plan for next week to add $TSLA shares or options? \n\nI will add a few more shares if we go down. Would really lik…
+30       RT @pakpakchicken: My initial target for tesla deliveries 2022 was 1.3 million. Thats $tsla $1600\n\nThat was 3 yrs ago. \n\nWith revised 2022…
+31                                                RT @Teslaconomics: Next week will be nothing short of extraordinary. 🔥 \n\nStrap up. \n\n$TSLA #Tesla
+32                                                                                      RT @teslaunivrse: Reasons to Sell… $TSLA https://t.co/PVkb4i8TMq
+33                                        RT @davidtayar5: * Tesla aims for 'a few' Model Y deliveries from Gigafactory Texas by end of quarter\n\n$TSLA
+34                                                                      RT @patienttrading: $TSLA\n\nIn 13 trading days, -22%!\n\nWhat does it tell you?
+35                         @ComputeSam @JoeBiden Stay calm, $tsla with this fundamentals and outlook is 2022 easily a 1500$ stock probably higher ✊🏻🍻
+36        RT @garyblack00: Two bullish charts from ARK why to own $TSLA:\n- EV adoption continues to soar by over +50%/year (2021 +112%)\n- $TSLA holdi…
+37                                                            RT @ShrimpTeslaLong: Why buy $TSLA?  Because it‘s the best damn company on Earth.  Period.
+38                                     RT @HarryWangEra: First ever milli day\n\nHoly fuck\n\nThanks $AMZN $SPY $BNTX $GME $TSLA https://t.co/bHcUHFmY39
+39        RT @SomeCrypt0Guy: Hello #Crypto Twitter. Hope the dip has been enjoyable for you. Please have a #DogeBonk meme\n\n#meme #memes #memesdaily #…
+40                                                                         RT @BMT094: @SawyerMerritt I bought $TSLA stock first before I owned a Tesla.
+41          RT @SawyerMerritt: Sad to see others shame people who don't own Teslas yet, even if they like/support the company in others ways. Just beca…
+42                                                                           RT @bevedoni: if you panic now, you will panic the rest of your life. $tsla
+43                                                                                      RT @teslaunivrse: Reasons to Sell… $TSLA https://t.co/PVkb4i8TMq
+44 Trending Stocks on #fintwit: \n\nSource: https://t.co/cWJOwWSb0I \n\n1. $ETH 🥇\n2. $TSLA 🥈\n3. $DIA 🥉\n4. $KSS\n5. $F\n6.… https://t.co/332RlXV4Jq
+45         RT @Umbisam: Several Chinese outlets reports that Tesla will officially launch the new 'Model Q' [😂] in 2023, be priced at $24,990 and will…
+46       RT @pakpakchicken: My initial target for tesla deliveries 2022 was 1.3 million. Thats $tsla $1600\n\nThat was 3 yrs ago. \n\nWith revised 2022…
+47     RT @PrintingTendies: 😂😂😂 black Monday crash coming soon must watch clip!!! \n\n$spy $btc $iwm $qqq $tsla $aapl #BitcoinCrash #bitcoin #StockM…
+48          @garyblack00 Gary, check out this https://t.co/qDxnplJ5nv interview with Dan Ives/Wedbush: $TSLA is the one stock h… https://t.co/CekTKW1Vih
+49      $TSLA winnings of initial #BTC investment🙌\n\n$44616343 (3.3 %) (Realized: 272 M)\n(Estimating an average buy price of… https://t.co/CJzn8JjI95
+50                                                                                                            @iliyasudennis2 Only if you short $tsla ;)
+51        Self driving cars will never happen, $TSLA is going to zero.\n\nQuantum computers will never happen, $IONQ is going t… https://t.co/PrUNVNp48P
+52          RT @AlternateJones: My $TSLA returns ranged from -50% to -5% for 6.5 years from Dec 2013 to May 2020. \n\n6.5 years!\n\nPatience is the key!
+53                                      RT @JustinScerini: $Doge #Dogecoin exchange rate now changed get on the $Tsla merch shop https://t.co/HKsZ4OtSHF
+54                                                                                        RT @garyblack00: $TSLA and $NDX today. https://t.co/6Wbw3ps3iQ
+55          RT @squawksquare: On a positive note, I woke up to 40K followers today. Thank you everyone for the follows. One of these days we'll get bac…
+56                                      RT @JustinScerini: $Doge #Dogecoin exchange rate now changed get on the $Tsla merch shop https://t.co/HKsZ4OtSHF
+57                                                                           As valid an approach as any I've seen. $tslaQ $TSLA https://t.co/UFTuaeyATU
+58       RT @pakpakchicken: My initial target for tesla deliveries 2022 was 1.3 million. Thats $tsla $1600\n\nThat was 3 yrs ago. \n\nWith revised 2022…
+59                                                                                      RT @teslaunivrse: Reasons to Sell… $TSLA https://t.co/PVkb4i8TMq
+60                                                                              Never fall for the FUD!!! LFG $TSLA !!! 🚀🚀🚀🌕 https://t.co/h84juMzaIH
+61                                                                           RT @bevedoni: if you panic now, you will panic the rest of your life. $tsla
+62       RT @pakpakchicken: My initial target for tesla deliveries 2022 was 1.3 million. Thats $tsla $1600\n\nThat was 3 yrs ago. \n\nWith revised 2022…
+   favorited favoriteCount       replyToSN             created truncated
+1      FALSE             0            <NA> 2022-01-22 05:44:26     FALSE
+2      FALSE             1            <NA> 2022-01-22 05:44:19      TRUE
+3      FALSE             0            <NA> 2022-01-22 05:44:19     FALSE
+4      FALSE             0            <NA> 2022-01-22 05:43:57      TRUE
+5      FALSE             0            <NA> 2022-01-22 05:43:24     FALSE
+6      FALSE             0            <NA> 2022-01-22 05:43:09     FALSE
+7      FALSE             0            <NA> 2022-01-22 05:42:33     FALSE
+8      FALSE             0            <NA> 2022-01-22 05:42:08     FALSE
+9      FALSE             0            <NA> 2022-01-22 05:42:08     FALSE
+10     FALSE             0            <NA> 2022-01-22 05:41:59     FALSE
+11     FALSE             0            <NA> 2022-01-22 05:41:50     FALSE
+12     FALSE             0            <NA> 2022-01-22 05:41:43      TRUE
+13     FALSE             0            <NA> 2022-01-22 05:41:17     FALSE
+14     FALSE             0            <NA> 2022-01-22 05:41:13      TRUE
+15     FALSE             0            <NA> 2022-01-22 05:40:50     FALSE
+16     FALSE             0          jpr007 2022-01-22 05:40:49      TRUE
+17     FALSE             0 TungstenMaximus 2022-01-22 05:40:31      TRUE
+18     FALSE             0            <NA> 2022-01-22 05:40:08     FALSE
+19     FALSE             0            <NA> 2022-01-22 05:39:52     FALSE
+20     FALSE             0            <NA> 2022-01-22 05:38:03     FALSE
+21     FALSE             0            <NA> 2022-01-22 05:37:58     FALSE
+22     FALSE             0            <NA> 2022-01-22 05:37:16     FALSE
+23     FALSE             0            <NA> 2022-01-22 05:36:50     FALSE
+24     FALSE             0            <NA> 2022-01-22 05:36:37      TRUE
+25     FALSE             0            <NA> 2022-01-22 05:36:32      TRUE
+26     FALSE             0            <NA> 2022-01-22 05:36:31     FALSE
+27     FALSE             0            <NA> 2022-01-22 05:36:27     FALSE
+28     FALSE             0            <NA> 2022-01-22 05:36:17      TRUE
+29     FALSE             0            <NA> 2022-01-22 05:36:01     FALSE
+30     FALSE             0            <NA> 2022-01-22 05:35:04     FALSE
+31     FALSE             0            <NA> 2022-01-22 05:34:25     FALSE
+32     FALSE             0            <NA> 2022-01-22 05:34:14     FALSE
+33     FALSE             0            <NA> 2022-01-22 05:34:11     FALSE
+34     FALSE             0            <NA> 2022-01-22 05:34:08     FALSE
+35     FALSE             0      ComputeSam 2022-01-22 05:33:38     FALSE
+36     FALSE             0            <NA> 2022-01-22 05:32:58     FALSE
+37     FALSE             0            <NA> 2022-01-22 05:32:51     FALSE
+38     FALSE             0            <NA> 2022-01-22 05:32:30     FALSE
+39     FALSE             0            <NA> 2022-01-22 05:32:23     FALSE
+40     FALSE             0            <NA> 2022-01-22 05:32:18     FALSE
+41     FALSE             0            <NA> 2022-01-22 05:32:11     FALSE
+42     FALSE             0            <NA> 2022-01-22 05:31:50     FALSE
+43     FALSE             0            <NA> 2022-01-22 05:31:34     FALSE
+44     FALSE             0            <NA> 2022-01-22 05:31:08      TRUE
+45     FALSE             0            <NA> 2022-01-22 05:30:56     FALSE
+46     FALSE             0            <NA> 2022-01-22 05:30:35     FALSE
+47     FALSE             0            <NA> 2022-01-22 05:30:23     FALSE
+48     FALSE             0     garyblack00 2022-01-22 05:30:22      TRUE
+49     FALSE             1            <NA> 2022-01-22 05:30:05      TRUE
+50     FALSE             0  iliyasudennis2 2022-01-22 05:30:01     FALSE
+51     FALSE             2            <NA> 2022-01-22 05:29:57      TRUE
+52     FALSE             0            <NA> 2022-01-22 05:29:06     FALSE
+53     FALSE             0            <NA> 2022-01-22 05:28:55     FALSE
+54     FALSE             0            <NA> 2022-01-22 05:28:31     FALSE
+55     FALSE             0            <NA> 2022-01-22 05:27:13     FALSE
+56     FALSE             0            <NA> 2022-01-22 05:27:06     FALSE
+57     FALSE             0            <NA> 2022-01-22 05:26:52     FALSE
+58     FALSE             0            <NA> 2022-01-22 05:26:46     FALSE
+59     FALSE             0            <NA> 2022-01-22 05:26:32     FALSE
+60     FALSE             4            <NA> 2022-01-22 05:26:18     FALSE
+61     FALSE             0            <NA> 2022-01-22 05:25:35     FALSE
+62     FALSE             0            <NA> 2022-01-22 05:25:20     FALSE
+     replyToSID           id   replyToUID
+1            NA 1.484764e+18           NA
+2            NA 1.484764e+18           NA
+3            NA 1.484764e+18           NA
+4            NA 1.484764e+18           NA
+5            NA 1.484764e+18           NA
+6            NA 1.484764e+18           NA
+7            NA 1.484763e+18           NA
+8            NA 1.484763e+18           NA
+9            NA 1.484763e+18           NA
+10           NA 1.484763e+18           NA
+11           NA 1.484763e+18           NA
+12           NA 1.484763e+18           NA
+13           NA 1.484763e+18           NA
+14           NA 1.484763e+18           NA
+15           NA 1.484763e+18           NA
+16 1.477499e+18 1.484763e+18 5.237012e+07
+17 1.484762e+18 1.484763e+18 2.337725e+09
+18           NA 1.484763e+18           NA
+19           NA 1.484763e+18           NA
+20           NA 1.484762e+18           NA
+21           NA 1.484762e+18           NA
+22           NA 1.484762e+18           NA
+23           NA 1.484762e+18           NA
+24           NA 1.484762e+18           NA
+25           NA 1.484762e+18           NA
+26           NA 1.484762e+18           NA
+27           NA 1.484762e+18           NA
+28           NA 1.484762e+18           NA
+29           NA 1.484762e+18           NA
+30           NA 1.484762e+18           NA
+31           NA 1.484761e+18           NA
+32           NA 1.484761e+18           NA
+33           NA 1.484761e+18           NA
+34           NA 1.484761e+18           NA
+35 1.484744e+18 1.484761e+18 1.110649e+18
+36           NA 1.484761e+18           NA
+37           NA 1.484761e+18           NA
+38           NA 1.484761e+18           NA
+39           NA 1.484761e+18           NA
+40           NA 1.484761e+18           NA
+41           NA 1.484761e+18           NA
+42           NA 1.484761e+18           NA
+43           NA 1.484761e+18           NA
+44           NA 1.484761e+18           NA
+45           NA 1.484760e+18           NA
+46           NA 1.484760e+18           NA
+47           NA 1.484760e+18           NA
+48           NA 1.484760e+18 1.161704e+18
+49           NA 1.484760e+18           NA
+50 1.484742e+18 1.484760e+18 3.200499e+09
+51           NA 1.484760e+18           NA
+52           NA 1.484760e+18           NA
+53           NA 1.484760e+18           NA
+54           NA 1.484760e+18           NA
+55           NA 1.484760e+18           NA
+56           NA 1.484760e+18           NA
+57           NA 1.484759e+18           NA
+58           NA 1.484759e+18           NA
+59           NA 1.484759e+18           NA
+60           NA 1.484759e+18           NA
+61           NA 1.484759e+18           NA
+62           NA 1.484759e+18           NA
+                                                                                                       statusSource
+1                                           <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+2                                <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+3                              <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+4                              <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+5                              <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+6                                <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+7                                <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+8                              <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+9                                 <a href="http://twitter.com/#!/download/ipad" rel="nofollow">Twitter for iPad</a>
+10                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+11                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+12                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+13                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+14                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+15                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+16                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+17                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+18                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+19                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+20                                           <a href="https://www.madmods4u.com" rel="nofollow">StreamHelperApp</a>
+21                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+22                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+23                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+24                   <a href="https://www.linkedin.com/in/khalil-alkassis-aa0b8578/" rel="nofollow">HotTakesBot</a>
+25                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+26                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+27                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+28                   <a href="https://www.linkedin.com/in/khalil-alkassis-aa0b8578/" rel="nofollow">HotTakesBot</a>
+29                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+30                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+31                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+32                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+33                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+34                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+35                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+36                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+37                                <a href="http://twitter.com/#!/download/ipad" rel="nofollow">Twitter for iPad</a>
+38                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+39                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+40                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+41                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+42                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+43                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+44       <a href="https://help.twitter.com/en/using-twitter/how-to-tweet#source-labels" rel="nofollow">finapse2</a>
+45                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+46                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+47                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+48                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+49 <a href="https://help.twitter.com/en/using-twitter/how-to-tweet#source-labels" rel="nofollow">CryptoQuantBot</a>
+50                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+51                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+52                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+53                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+54                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+55                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+56                             <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+57                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+58                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+59                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+60                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+61                               <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
+62                                          <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+        screenName retweetCount isRetweet retweeted longitude latitude
+1     Rose17263100           96      TRUE     FALSE        NA       NA
+2          Bb1Kehn            0     FALSE     FALSE        NA       NA
+3     Chancethepug          191      TRUE     FALSE        NA       NA
+4   Trades75699329            0     FALSE     FALSE        NA       NA
+5          eddiek2            1      TRUE     FALSE        NA       NA
+6  Kimball00186431           93      TRUE     FALSE        NA       NA
+7   CrypTigerApe69            3      TRUE     FALSE        NA       NA
+8         EDK_1007            6      TRUE     FALSE        NA       NA
+9         indrayam           26      TRUE     FALSE        NA       NA
+10    neilsaidwhat            0     FALSE     FALSE        NA       NA
+11       nfkmobile           20      TRUE     FALSE        NA       NA
+12 AndreiRazmerita            0     FALSE     FALSE        NA       NA
+13     Alienlife_1            1      TRUE     FALSE        NA       NA
+14    RatesMaestro            0     FALSE     FALSE        NA       NA
+15   MasembeAbdul7           20      TRUE     FALSE        NA       NA
+16     Neilcoram15            0     FALSE     FALSE        NA       NA
+17 TungstenMaximus            0     FALSE     FALSE        NA       NA
+18        wcli1108            6      TRUE     FALSE        NA       NA
+19 KellieAnnOxford           56      TRUE     FALSE        NA       NA
+20    HelperStream           31      TRUE     FALSE        NA       NA
+21        wcli1108           23      TRUE     FALSE        NA       NA
+22         elislmy          197      TRUE     FALSE        NA       NA
+23        wcli1108           31      TRUE     FALSE        NA       NA
+24 RealHotTakesBot            0     FALSE     FALSE        NA       NA
+25    InvestorSwan            0     FALSE     FALSE        NA       NA
+26  rakesh31046324           13      TRUE     FALSE        NA       NA
+27    dleogudskshk          197      TRUE     FALSE        NA       NA
+28 RealHotTakesBot            0     FALSE     FALSE        NA       NA
+29      ESGESG1001            3      TRUE     FALSE        NA       NA
+30        wcli1108          120      TRUE     FALSE        NA       NA
+31        wcli1108            9      TRUE     FALSE        NA       NA
+32         Mars4x4            4      TRUE     FALSE        NA       NA
+33        wcli1108           12      TRUE     FALSE        NA       NA
+34        wcli1108            4      TRUE     FALSE        NA       NA
+35     HardyFuture            0     FALSE     FALSE        NA       NA
+36 kennych88527377           93      TRUE     FALSE        NA       NA
+37 RalphGorichanaz            5      TRUE     FALSE        NA       NA
+38  LorrieCulligan           25      TRUE     FALSE        NA       NA
+39 BrianBouphavon1            6      TRUE     FALSE        NA       NA
+40      ESGESG1001            3      TRUE     FALSE        NA       NA
+41      ESGESG1001           53      TRUE     FALSE        NA       NA
+42  rakesh31046324           16      TRUE     FALSE        NA       NA
+43        akidesir            4      TRUE     FALSE        NA       NA
+44  FintwitSynapse            0     FALSE     FALSE        NA       NA
+45     NSuresh_ECW           31      TRUE     FALSE        NA       NA
+46       tanyizhi1          120      TRUE     FALSE        NA       NA
+47    tkcybersmart            1      TRUE     FALSE        NA       NA
+48     neoworksinc            0     FALSE     FALSE        NA       NA
+49          MBrae3            0     FALSE     FALSE        NA       NA
+50     amitdas0608            0     FALSE     FALSE        NA       NA
+51      elwalvador            1     FALSE     FALSE        NA       NA
+52      AMCBullrun            4      TRUE     FALSE        NA       NA
+53    ArvindKajala           15      TRUE     FALSE        NA       NA
+54         VirtusT           26      TRUE     FALSE        NA       NA
+55   vovan17842399            8      TRUE     FALSE        NA       NA
+56       saturos_1           15      TRUE     FALSE        NA       NA
+57    Paul91701736            0     FALSE     FALSE        NA       NA
+58 kennych88527377          120      TRUE     FALSE        NA       NA
+59 AnnaSky92974146            4      TRUE     FALSE        NA       NA
+60          to4sho            0     FALSE     FALSE        NA       NA
+61      teshen8lin           16      TRUE     FALSE        NA       NA
+62       Froger_19          120      TRUE     FALSE        NA       NA
+ [ reached 'max' / getOption("max.print") -- omitted 38 rows ]
+
+****************************************************************Visualizations************************************************************************
+> plot(x=apple$retweetCount)
+Error in plot.new() : figure margins too large
+> plot(x=apple$retweetCount,y=apple$favoriteCount)
+Error in plot.new() : figure margins too large
+> barplot(apple$retweetCount)
+> plot(x=apple$retweetCount)
+> pie(apple$retweetCount)
+***************************************************************Implementation**********************************
+> corpus <- Corpus(VectorSource(apple))
+> tdm <- TermDocumentMatrix(corpus, control = list(minWordLength=c(1,Inf)))
+> t <- removeSparseTerms(tdm, sparse=0.98)
+> m <- as.matrix(t)
+> m1 <- t
+> set.seed(222)
+> k <- 12
+> kc <-kmeans(m1, k)
+> kc
+
+Within cluster sum of squares by cluster:
+ [1]    0.00000   12.50000 1601.67147    0.00000  234.52632 1246.00000    0.00000
+ [8]  116.16667    0.00000    0.00000   91.26996    0.00000
+ (between_SS / total_SS =  96.9 %)
+
+Available components:
+
+[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
+[6] "betweenss"    "size"         "iter"         "ifault"
